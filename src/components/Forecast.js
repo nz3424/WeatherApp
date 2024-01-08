@@ -15,7 +15,7 @@ export default function Forecast({ data }) {
     const [active, setActive] = useState(-1);
 
     function handleOnClick(index) {
-        (active == index) ? setActive(-1)
+        (active === index) ? setActive(-1)
             : setActive(index);
     }
     return <>
@@ -23,7 +23,7 @@ export default function Forecast({ data }) {
         <Accordion allowZeroExpanded className="accordion"> {data.list.slice().filter((item) => (item.dt - initialTime) % DATE_INTERVAL === 0).map((item, idx) => (
             <AccordionItem key={idx}>
                 <AccordionItemHeading>
-                    <AccordionItemButton> <div className={(active == idx) ? "daily-item-active" : "daily-item"} onClick={() => handleOnClick(idx)}>
+                    <AccordionItemButton> <div className={(active === idx) ? "daily-item-active" : "daily-item"} onClick={() => handleOnClick(idx)}>
                         <img className="forecast-icon" alt="weather" src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} />
                         <label className="forecast-day">{forecastDays[idx]} </label>
                         <label className="forecast-description">{item.weather[0].description} </label>
